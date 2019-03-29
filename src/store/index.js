@@ -7,9 +7,17 @@ Vue.use(Vuex)
 
 const debug = process.env.NODE_ENV !== 'production'
 
-export default new Vuex.Store({
-  modules: {
-    index,
-  },
-  strict: debug,
-})
+// export default new Vuex.Store({
+//   modules: {
+//     index,
+//   },
+//   strict: debug,
+// })
+export function createStore() {
+  return new Vuex.Store({
+    modules: {
+      index,
+    },
+    strict: debug,
+  });
+}

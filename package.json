@@ -3,14 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build:client": "vue-cli-service build",
+    "build:server": "cross-env WEBPACK_TARGET=node vue-cli-service build --mode server",
+    "build:win": "npm run build:server && move dist\\vue-ssr-server-bundle.json bundle && npm run build:client && move bundle dist\\vue-ssr-server-bundle.json && del /F /S /Q dist\\index.html && cross-env WEBPACK_TARGET=node NODE_ENV=production",
+    "postbuild:win": "node .\\server.js",
+    "build:linux": "npm run build:server && mv dist/vue-ssr-server-bundle.json bundle && npm run build:client && mv bundle dist/vue-ssr-server-bundle.json && rm -rf dist/index.html && cross-env WEBPACK_TARGET=node NODE_ENV=production",
+    "postbuild:linux": "forever stop server.js && forever start server.js && echo '╰( ´・ω・)つ──☆✿✿✿ 服务重启成功'",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "css-loader": "^2.1.1",
-    "vue": "^2.6.6",
+    "koa": "^2.7.0",
+    "koa-static": "^5.0.0",
+    "sass-loader": "^7.1.0",
+    "vue": "^2.6.10",
     "vue-router": "^3.0.2",
+    "vue-server-renderer": "^2.6.10",
     "vuex": "^3.1.0"
   },
   "devDependencies": {
@@ -18,9 +28,12 @@
     "@vue/cli-plugin-eslint": "^3.0.1",
     "@vue/cli-service": "^3.0.1",
     "babel-eslint": "^10.0.1",
+    "cross-env": "^5.2.0",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
-    "vue-template-compiler": "^2.5.21"
+    "lodash.merge": "^4.6.1",
+    "vue-template-compiler": "^2.5.21",
+    "webpack-node-externals": "^1.7.2"
   },
   "eslintConfig": {
     "root": true,
