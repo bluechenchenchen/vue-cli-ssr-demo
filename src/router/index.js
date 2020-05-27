@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 // import Index from '@/components/HelloWorld'
+const Index  = () => import('../components/HelloWorld')
 
 Vue.use(Router)
 
@@ -12,11 +13,12 @@ export function createRouter () {
       { 
         path: '/', 
         name: 'Index',
-        // component: Index,
+        component: Index,
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "index" */ '@/components/HelloWorld')
+        // component: () => import(/* webpackChunkName: "index" */ '@/components/HelloWorld')
+        // component: () => import('@/components/HelloWorld')
       },
     ],
   })
