@@ -14,10 +14,16 @@ const debug = process.env.NODE_ENV !== 'production'
 //   strict: debug,
 // })
 export function createStore() {
-  return new Vuex.Store({
+  const store =  new Vuex.Store({
     modules: {
       index,
     },
     strict: debug,
   });
+  if (typeof window !== 'undefined' && window.__INITIAL_STATE__) {
+    console.log('window.__INITIAL_STATE__', window.__INITIAL_STATE__);
+    store.replaceState(window.__INITIAL_STATE__);
+  }
+  return store
+
 }

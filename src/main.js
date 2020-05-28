@@ -26,5 +26,5 @@ export function createApp () {
     store,
     render: h => h(App)//vue2.0的写法，render函数是渲染一个视图，然后提供给el挂载，如果没有render那页面什么都不会出来
   })
-  return { app, router}
+  return { app, store, router}
 } 

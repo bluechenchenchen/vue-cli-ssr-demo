@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-// import Index from '@/components/HelloWorld'
-const Index  = () => import('../components/HelloWorld')
+import Index from '@/components/HelloWorld'
+// const Index  = () => import('../components/HelloWorld')
+import About from '@/components/About'
 
 Vue.use(Router)
 
@@ -20,6 +21,11 @@ export function createRouter () {
         // component: () => import(/* webpackChunkName: "index" */ '@/components/HelloWorld')
         // component: () => import('@/components/HelloWorld')
       },
+      {
+        path: '/about',
+        name: 'About',
+        component: About
+      }
     ],
   })
 }

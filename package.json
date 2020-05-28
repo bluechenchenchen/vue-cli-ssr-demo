@@ -10,7 +10,7 @@
     "build:win": "npm run build:server && move dist\\vue-ssr-server-bundle.json bundle && npm run build:client && move bundle dist\\vue-ssr-server-bundle.json && del /F /S /Q dist\\index.html && cross-env WEBPACK_TARGET=node NODE_ENV=production",
     "postbuild:win": "node .\\server.js",
     "build:linux": "npm run build:server && mv dist/vue-ssr-server-bundle.json bundle && npm run build:client && mv bundle dist/vue-ssr-server-bundle.json && rm -rf dist/index.html && cross-env WEBPACK_TARGET=node NODE_ENV=production",
-    "postbuild:linux": "forever stop server.js && forever start server.js && echo '╰( ´・ω・)つ──☆✿✿✿ 服务重启成功'",
+    "postbuild:linux": "node server.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
