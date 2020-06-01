@@ -2,13 +2,12 @@ const fs = require("fs");
 const Koa = require("koa");
 const path = require("path");
 const send = require('koa-send')
-const koaStatic = require('koa-static')
+// const koaStatic = require('koa-static')
 const app = new Koa();
 /* eslint-disable */
 const resolve = file => path.resolve(__dirname, file);
 // 开放dist目录
-app.use(koaStatic(resolve('./dist')))
-
+// app.use(koaStatic(resolve('./dist')))
 // 第 2 步：获得一个createBundleRenderer
 const { createBundleRenderer } = require("vue-server-renderer");
 const bundle = require("./dist/vue-ssr-server-bundle.json");
@@ -32,7 +31,7 @@ app.use(async (ctx, next) => {
   const url = ctx.path
   if (/\w+.[js|css|jpg|jpeg|png|gif|map]/.test(url)) {
     console.log(`proxy ${url}`)
-    return await send(ctx, url, { root: path.resolve(__dirname, '../dist') })
+    return await send(ctx, url, { root: path.resolve(__dirname, './dist') })
   }
   const context = {
     title: "ssr test",
