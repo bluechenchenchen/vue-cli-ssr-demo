@@ -31,7 +31,7 @@
     "cross-env": "^5.2.0",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
-    "lodash.merge": "^4.6.1",
+    "lodash.merge": "^4.6.2",
     "vue-template-compiler": "^2.5.21",
     "webpack-node-externals": "^1.7.2"
   },
